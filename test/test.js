@@ -72,7 +72,7 @@ describe('angular preset', function() {
         expect(chunk).to.include('amazing new module');
         expect(chunk).to.include('**compile:** avoid a bug');
         expect(chunk).to.include('make it faster');
-        expect(chunk).to.include(', closes [#1](https://github.com/conventional-changelog/conventional-changelog-angular/issues/1) [#2](https://github.com/conventional-changelog/conventional-changelog-angular/issues/2)');
+        expect(chunk).to.include(', closes [#1](https://github.com/azu/conventional-changelog-angular-all/issues/1) [#2](https://github.com/azu/conventional-changelog-angular-all/issues/2)');
         expect(chunk).to.include('Not backward compatible.');
         expect(chunk).to.include('**compile:** The Change is huge.');
         expect(chunk).to.include('Features');
@@ -83,12 +83,12 @@ describe('angular preset', function() {
         expect(chunk).to.include('BREAKING CHANGES');
 
         // expect(chunk).to.not.include('first commit');
-        expect(chunk).to.not.include('feat');
-        expect(chunk).to.not.include('fix');
-        expect(chunk).to.not.include('perf');
-        expect(chunk).to.not.include('revert');
-        expect(chunk).to.not.include('***:**');
-        expect(chunk).to.not.include(': Not backward compatible.');
+        // expect(chunk).to.not.include('feat');
+        // expect(chunk).to.not.include('fix');
+        // expect(chunk).to.not.include('perf');
+        // expect(chunk).to.not.include('revert');
+        // expect(chunk).to.not.include('***:**');
+        // expect(chunk).to.not.include(': Not backward compatible.');
 
         done();
       }));
@@ -105,7 +105,7 @@ describe('angular preset', function() {
       })
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
-        expect(chunk).to.include('[#133](https://github.com/conventional-changelog/conventional-changelog-angular/issues/133)');
+        expect(chunk).to.include('[#133](https://github.com/azu/conventional-changelog-angular-all/issues/133)');
         done();
       }));
   });
@@ -121,8 +121,8 @@ describe('angular preset', function() {
       })
       .pipe(through(function(chunk) {
         chunk = chunk.toString();
-        expect(chunk).to.include('[#88](https://github.com/conventional-changelog/conventional-changelog-angular/issues/88)');
-        expect(chunk).to.not.include('closes [#88](https://github.com/conventional-changelog/conventional-changelog-angular/issues/88)');
+        expect(chunk).to.include('[#88](https://github.com/azu/conventional-changelog-angular-all/issues/88)');
+        expect(chunk).to.not.include('closes [#88](https://github.com/azu/conventional-changelog-angular-all/issues/88)');
         done();
       }));
   });
@@ -276,9 +276,9 @@ describe('angular preset', function() {
       .pipe(through(function(chunk, enc, cb) {
         chunk = chunk.toString();
 
-        expect(chunk).to.include('(https://github.com/conventional-changelog/conventional-changelog-angular/compare');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog-angular/commit/');
-        expect(chunk).to.include('](https://github.com/conventional-changelog/conventional-changelog-angular/issues/');
+        expect(chunk).to.include('(https://github.com/azu/conventional-changelog-angular-all/compare');
+        expect(chunk).to.include('](https://github.com/azu/conventional-changelog-angular-all/commit/');
+        expect(chunk).to.include('](https://github.com/azu/conventional-changelog-angular-all/issues/');
 
         i++;
         cb();
