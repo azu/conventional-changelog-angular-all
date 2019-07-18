@@ -4,6 +4,7 @@ const compareFunc = require(`compare-func`);
 const Q = require(`q`);
 const readFile = Q.denodeify(require(`fs`).readFile);
 const resolve = require(`path`).resolve;
+const conventionalCommitTypes = require(`conventional-commit-types`)
 
 module.exports = Q.all([
   readFile(resolve(__dirname, `./templates/template.hbs`), `utf-8`),
@@ -31,24 +32,9 @@ function getWriterOpts() {
         note.title = `BREAKING CHANGES`;
       });
 
-      if (commit.type === `feat`) {
-        commit.type = `Features`;
-      } else if (commit.type === `fix`) {
-        commit.type = `Bug Fixes`;
-      } else if (commit.type === `perf`) {
-        commit.type = `Performance Improvements`;
-      } else if (commit.type === `revert`) {
-        commit.type = `Reverts`;
-      } else if (commit.type === `docs`) {
-        commit.type = `Documentation`;
-      } else if (commit.type === `style`) {
-        commit.type = `Styles`;
-      } else if (commit.type === `refactor`) {
-        commit.type = `Code Refactoring`;
-      } else if (commit.type === `test`) {
-        commit.type = `Tests`;
-      } else if (commit.type === `chore`) {
-        commit.type = `Chores`;
+      const matchedType = conventionalCommitTypes.types[commit.type]
+      if (matchedType) {
+        commit.type = matchedType.title
       } else {
         return undefined; // ignore other type
       }
